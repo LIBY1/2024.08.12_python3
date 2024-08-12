@@ -14,3 +14,32 @@ try:
         print(f"{number}은(는) 홀수입니다.")
 except ValueError:
     print("유효한 숫자를 입력해 주세요.")
+
+
+%pip install ultralytics opencv-python-headless matplotlib
+from google.colab import files
+uploaded = files.upload()
+filename = next(iter(uploaded))
+!mkdir -p /content/sample_data
+!mv {filename} /content/sample_data/(filename)
+
+
+
+
+from ultralytics import YOLO
+from IPython.display import Image, display
+model = YOLO('yolov8n.pt')
+image_path = '/content/sample_data/1.jpg'
+results = model.predict(image_path)
+first_result = results[0]
+first_result.save()
+saved_image_path = '/content/results_1.jpg'
+display(Image(saved_image_path))
+
+
+
+
+
+
+
+
